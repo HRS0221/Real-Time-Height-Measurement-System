@@ -10,12 +10,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - GitHub Actions CI/CD pipeline
 - Comprehensive documentation
-- Contributing guidelines
 - MIT License
+- Homepage screenshot for better project visualization
 
 ### Changed
 - Improved README with badges and better structure
 - Enhanced project documentation
+
+### Removed
+- Redundant startup scripts (`start_backend.py`, `start_frontend.bat`)
+- Contributing guidelines file (simplified project structure)
+- Build artifacts and cache files
+- Unused dependencies and files
 
 ## [1.0.0] - 2025-01-XX
 

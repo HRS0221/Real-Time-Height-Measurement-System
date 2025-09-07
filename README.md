@@ -8,6 +8,10 @@
 
 A sophisticated computer vision-based height measurement system that uses your laptop camera to measure a person's height in real-time. Built with Python backend (FastAPI + MediaPipe) and React frontend with TypeScript.
 
+## 📸 Screenshot
+
+![HomePage](HomePage.png)
+
 ## ✨ Features
 
 - **🧠 AI-Powered Detection**: Uses Google's MediaPipe for 33 precise body landmarks
@@ -65,27 +69,13 @@ A sophisticated computer vision-based height measurement system that uses your l
 
 ### Running the Application
 
-#### Option 1: Use the startup scripts
-
 1. **Start the backend** (in one terminal):
-   ```bash
-   python start_backend.py
-   ```
-
-2. **Start the frontend** (in another terminal):
-   ```bash
-   start_frontend.bat
-   ```
-
-#### Option 2: Manual startup
-
-1. **Start the backend**:
    ```bash
    cd backend
    python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
    ```
 
-2. **Start the frontend**:
+2. **Start the frontend** (in another terminal):
    ```bash
    cd frontend
    npm start
@@ -95,36 +85,37 @@ A sophisticated computer vision-based height measurement system that uses your l
 
 ## 📋 How to Use
 
-### 1. Calibration
-1. **Choose a reference object** (credit card, A4 paper, etc.)
-2. **Place the object** next to where the person will stand
-3. **Measure the object's height in pixels** using any image editor
-4. **Enter the pixel height** in the calibration form
-5. **Click "Calibrate System"**
+### 1. Auto-Calibration
+The system automatically calibrates using your torso length (shoulders to hips):
+1. **Stand in front of the camera** with your full body visible
+2. **Ensure shoulders and hips are clearly visible** and facing the camera
+3. **Stand still** while the system collects 40 calibration samples
+4. **Wait for calibration to complete** (progress will be shown)
+5. **System is ready** when calibration reaches 100%
 
 ### 2. Height Measurement
 1. **Stand in front of the camera** with your full body visible
 2. **Ensure good lighting** for better detection
 3. **Stand straight** against a plain background
-4. **Wait for pose landmarks** to appear (green dots)
-5. **Your height will be displayed** in real-time
+4. **Wait for pose landmarks** to appear (colored dots and lines)
+5. **Your height will be displayed** in real-time with confidence score
 
 ## 🎯 Accuracy Tips
 
 - **Good lighting** is essential for accurate detection
 - **Plain background** works best
 - **Stand straight** and keep your full body in frame
-- **Reference object** should be at the same distance as you
+- **Ensure shoulders and hips are visible** for proper calibration
 - **Wait for high confidence** (above 50%) before taking measurements
+- **Stand 2-3 meters from camera** for optimal results
 
 ## 🔧 Configuration
 
-### Reference Objects
-- **Credit Card**: 5.4cm height
-- **A4 Paper (width)**: 21.0cm
-- **A4 Paper (height)**: 29.7cm
-- **iPhone (height)**: 14.7cm
-- **Custom**: Enter your own dimensions
+### Auto-Calibration Settings
+- **Torso Length**: Uses average adult torso length (50cm from shoulders to hips)
+- **Sample Count**: Collects 40 samples for robust calibration
+- **Outlier Filtering**: Trims 10% of extreme values for accuracy
+- **Visibility Threshold**: Requires 70% confidence for landmark detection
 
 ### GPU Acceleration
 The system automatically uses your CUDA 11.7 setup for faster processing. Make sure TensorFlow can detect your GPU:
@@ -138,8 +129,7 @@ print("GPU Available: ", tf.config.list_physical_devices('GPU'))
 ```
 real-time-height-measurement-system/
 ├── backend/
-│   ├── main.py              # FastAPI server with pose detection
-│   └── __pycache__/         # Python cache (gitignored)
+│   └── main.py              # FastAPI server with pose detection
 ├── frontend/
 │   ├── src/
 │   │   ├── components/      # React components
@@ -154,11 +144,11 @@ real-time-height-measurement-system/
 │   │   └── index.html      # HTML template
 │   ├── package.json        # Node.js dependencies
 │   └── tsconfig.json       # TypeScript configuration
-├── .gitignore              # Git ignore rules
-├── requirements.txt        # Python dependencies
-├── start_backend.py        # Backend startup script
-├── start_frontend.bat      # Frontend startup script (Windows)
-└── README.md              # Project documentation
+├── CHANGELOG.md            # Version history
+├── HomePage.png            # Project homepage screenshot
+├── LICENSE                 # MIT License
+├── README.md              # Project documentation
+└── requirements.txt        # Python dependencies
 ```
 
 ## 🐛 Troubleshooting
@@ -179,7 +169,7 @@ real-time-height-measurement-system/
    - Improve lighting conditions
    - Use a plain background
    - Ensure full body is visible
-   - Recalibrate with a different reference object
+   - Reset calibration and try again
 
 4. **GPU not being used**
    - Verify CUDA installation
@@ -189,8 +179,9 @@ real-time-height-measurement-system/
 ## 📊 API Endpoints
 
 - `GET /` - API status
-- `POST /calibrate` - Calibrate the system
-- `WebSocket /ws` - Real-time video processing
+- `WebSocket /ws` - Real-time video processing with auto-calibration
+  - Send `{"type": "image", "data": "base64_image"}` for processing
+  - Send `{"type": "reset"}` to reset calibration
 
 ## 🎯 Performance Metrics
 
@@ -233,7 +224,8 @@ real-time-height-measurement-system/
 4. **Run in development mode**
    ```bash
    # Terminal 1 - Backend
-   python start_backend.py
+   cd backend
+   python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
    
    # Terminal 2 - Frontend
    cd frontend

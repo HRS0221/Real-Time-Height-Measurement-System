@@ -9,11 +9,6 @@ mediapipe==0.10.21
 numpy==1.26.0
 tensorflow==2.20.0
 
-# ArUco marker detection for metric calibration
-opencv-contrib-python==4.8.1.78
-
 # Additional dependencies
 Pillow==10.1.0
 python-multipart==0.0.6
-python-socketio==5.10.0
-eventlet==0.33.3
