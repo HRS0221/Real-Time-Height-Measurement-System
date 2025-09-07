@@ -51,8 +51,8 @@ A sophisticated computer vision-based height measurement system that uses your l
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/real-time-height-measurement-system.git
-   cd real-time-height-measurement-system
+   git clone https://github.com/HRS0221/Real-Time-Height-Measurement-System.git
+   cd Real-Time-Height-Measurement-System
    ```
 
 2. **Install Python dependencies**
@@ -127,7 +127,7 @@ print("GPU Available: ", tf.config.list_physical_devices('GPU'))
 ## 📁 Project Structure
 
 ```
-real-time-height-measurement-system/
+Real-Time-Height-Measurement-System/
 ├── backend/
 │   └── main.py              # FastAPI server with pose detection
 ├── frontend/
@@ -203,8 +203,8 @@ real-time-height-measurement-system/
 
 1. **Fork and clone the repository**
    ```bash
-   git clone https://github.com/yourusername/real-time-height-measurement-system.git
-   cd real-time-height-measurement-system
+   git clone https://github.com/HRS0221/Real-Time-Height-Measurement-System.git
+   cd Real-Time-Height-Measurement-System
    ```
 
 2. **Create a virtual environment**
@@ -249,8 +249,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👨‍💻 Author
 
 **Himanshu Kishor Salunke**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+- GitHub: [@HRS0221](https://github.com/HRS0221)
+- LinkedIn: [Himanshu Kishor Salunke](https://www.linkedin.com/in/hr0221/)
 
 ## 🙏 Acknowledgments
 
@@ -261,7 +261,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📊 Project Stats
 
-![GitHub stars](https://img.shields.io/github/stars/yourusername/real-time-height-measurement-system?style=social)
-![GitHub forks](https://img.shields.io/github/forks/yourusername/real-time-height-measurement-system?style=social)
-![GitHub issues](https://img.shields.io/github/issues/yourusername/real-time-height-measurement-system)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/yourusername/real-time-height-measurement-system)
+![GitHub stars](https://img.shields.io/github/stars/HRS0221/Real-Time-Height-Measurement-System?style=social)
+![GitHub forks](https://img.shields.io/github/forks/HRS0221/Real-Time-Height-Measurement-System?style=social)
+![GitHub issues](https://img.shields.io/github/issues/HRS0221/Real-Time-Height-Measurement-System)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/HRS0221/Real-Time-Height-Measurement-System)
