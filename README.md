@@ -63,7 +63,7 @@ A sophisticated computer vision-based height measurement system that uses your l
 3. **Install Node.js dependencies**
    ```bash
    cd frontend
-   npm install --legacy-peer-deps
+   npm install
    cd ..
    ```
 
@@ -72,7 +72,7 @@ A sophisticated computer vision-based height measurement system that uses your l
 1. **Start the backend** (in one terminal):
    ```bash
    cd backend
-   python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+   python main.py
    ```
 
 2. **Start the frontend** (in another terminal):
